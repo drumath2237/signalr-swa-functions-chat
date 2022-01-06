@@ -5,7 +5,8 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "preview:swa": "yarn swa start http://localhost:3000 --run \"yarn dev\""
+    "preview:swa": "swa start http://localhost:3000 --run \"yarn dev\" --api-location /api",
+    "start:api": "cd api && yarn start"
   },
   "dependencies": {
     "vue": "^3.2.25"
