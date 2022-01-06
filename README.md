@@ -1,11 +1,44 @@
-# Vue 3 + Typescript + Vite
+# SignalR SWA Functions Chat
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+[![Azure Static Web Apps CI/CD](https://github.com/drumath2237/signalr-swa-functions-chat/actions/workflows/azure-static-web-apps-purple-field-0bc377700.yml/badge.svg)](https://github.com/drumath2237/signalr-swa-functions-chat/actions/workflows/azure-static-web-apps-purple-field-0bc377700.yml)
 
-## Recommended IDE Setup
+## About
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+簡単なサーバレスチャットのデモ。
+ローカル環境では Vite ＋ Vue3 ＋ TypeScript のフロントエンドと、
+API 統合された Azure Functions ＋ SignalR を Static Web Apps CLI でエミュレートして開発している。
 
-## Type Support For `.vue` Imports in TS
+## Env
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+- VSCode
+- Vue3
+- Vite
+- TypeScript
+- Yarn
+- @microsoft/signalr
+- Static Web Apps CLI
+- Azure Funtions Core Tools v4
+- SignalR Serivce (serverless mode)
+
+## Install & Usage
+
+まず`/api/local.settigs.json`を作成し、SignalR の接続文字列を指定。
+その後以下のコマンドにより実行。
+
+```sh
+# install packacges
+yarn install
+
+cd api/
+yarn install
+
+# run azure functions
+yarn start:api
+
+# start swa cli
+yarn preview:swa
+```
+
+## Contact
+
+何かございましたら[にー兄さんの Twitter](https://twitter.com/ninisan_drumath)までお願いします。
