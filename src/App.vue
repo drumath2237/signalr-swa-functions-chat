@@ -6,7 +6,7 @@ import logoUrl from "./assets/logo.png?url";
 </script>
 
 <template>
-  <img alt="Vue logo" v-bind:src="logoUrl" />
+  <img alt="Vue logo" :src="logoUrl" />
   <HelloWorld />
 </template>
 

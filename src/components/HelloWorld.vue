@@ -1,21 +1,32 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useChat } from "../composables/useChat";
+import { HubConnectionBuilder, JsonHubProtocol } from "@microsoft/signalr"
 
-const hello = ref<string>("");
-fetch("/api/hello")
-  .then((res) => res.json())
-  .then((data) => {
-    hello.value = data.text;
+try {
+  const connection = new HubConnectionBuilder()
+    .withUrl("/api")
+    .build();
+
+  connection.start().then(() => {
+    console.log(`connection started!:${connection.state}`);
   });
+
+  connection.on("message", (newMessage: string) => {
+    pushMessage({ user: "userA", message: newMessage })
+  })
+} catch (e) {
+  console.error("connection build error");
+  console.error(e);
+}
 
 const { pushMessage, reversedMessages } = useChat();
 const inputText = ref("");
 
-const onClick = () => {
-  pushMessage({
-    user: "userA",
-    message: inputText.value
+const onClick = async () => {
+  await fetch("/api/sendMessage", {
+    method: "POST",
+    body: JSON.stringify({ message: inputText.value })
   });
   inputText.value = "";
 }
@@ -23,7 +34,6 @@ const onClick = () => {
 
 <template>
   <h1>hellooooo</h1>
-  <p id="hello">{{ hello }}</p>
 
   <div>
     <div id="inputWrpper">
