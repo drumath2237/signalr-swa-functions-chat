@@ -8,6 +8,8 @@
 ローカル環境では Vite ＋ Vue3 ＋ TypeScript のフロントエンドと、
 API 統合された Azure Functions ＋ SignalR を Static Web Apps CLI でエミュレートして開発している。
 
+![img](docs/structure.drawio.png)
+
 ## Env
 
 - VSCode
