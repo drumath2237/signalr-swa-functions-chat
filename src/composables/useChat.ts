@@ -1,11 +1,10 @@
 import { computed, reactive } from "vue";
-import { Message } from "../types/chatTypes";
 
 export const useChat = () => {
-  const messages = reactive<Message[]>([]);
+  const messages = reactive<string[]>([]);
   const reversedMessages = computed(() => messages.slice().reverse());
 
-  const pushMessage = (msg: Message) => {
+  const pushMessage = (msg: string) => {
     messages.push(msg);
   };
 

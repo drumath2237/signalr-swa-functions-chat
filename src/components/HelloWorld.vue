@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useChat } from "../composables/useChat";
-import { HubConnectionBuilder, JsonHubProtocol } from "@microsoft/signalr"
+import { HubConnectionBuilder } from "@microsoft/signalr"
 
 try {
   const connection = new HubConnectionBuilder()
@@ -13,10 +13,9 @@ try {
   });
 
   connection.on("message", (newMessage: string) => {
-    pushMessage({ user: "userA", message: newMessage })
+    pushMessage(newMessage)
   })
 } catch (e) {
-  console.error("connection build error");
   console.error(e);
 }
 
@@ -33,7 +32,7 @@ const onClick = async () => {
 </script>
 
 <template>
-  <h1>hellooooo</h1>
+  <h1>Welcome to Chat</h1>
 
   <div>
     <div id="inputWrpper">
@@ -41,7 +40,7 @@ const onClick = async () => {
       <input type="button" value="send" id="inputButton" @click="onClick" />
     </div>
     <div id="messagesWrapper">
-      <div v-for="(msg, index) of reversedMessages" :key="index">{{ msg.message }}</div>
+      <div v-for="(msg, index) of reversedMessages" :key="index">{{ msg }}</div>
     </div>
   </div>
 </template>
