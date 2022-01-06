@@ -8,5 +8,11 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "**/node_modules/": true
-  }
+  },
+  "azureFunctions.deploySubpath": "api",
+  "azureFunctions.postDeployTask": "npm install (functions)",
+  "azureFunctions.projectLanguage": "TypeScript",
+  "azureFunctions.projectRuntime": "~4",
+  "debug.internalConsoleOptions": "neverOpen",
+  "azureFunctions.preDeployTask": "npm prune (functions)"
 }
